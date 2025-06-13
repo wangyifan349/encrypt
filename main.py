@@ -7,11 +7,16 @@ from Crypto.Random import get_random_bytes
 from Crypto.Hash import SHA256
 from Crypto.Protocol.KDF import PBKDF2
 
-AudioVideoExtensions = {
-    '.mp3', '.wav', '.aac', '.flac', '.ogg',
-    '.mp4', '.avi', '.mkv', '.mov', '.flv', '.wmv'
+AudioExtensions = {
+    '.mp3', '.wav', '.aac', '.flac', '.ogg', '.m4a', '.wma', '.alac'
 }
-
+VideoExtensions = {
+    '.mp4', '.avi', '.mkv', '.mov', '.flv', '.wmv', '.webm', '.mpeg', '.mpg', '.m4v'
+}
+ImageExtensions = {
+    '.jpg', '.jpeg', '.png', '.bmp', '.gif', '.tiff', '.webp', '.heic', '.svg'
+}
+AudioVideoImageExtensions = AudioExtensions | VideoExtensions | ImageExtensions
 FixedSaltValue = b'my_fixed_salt_1234'  # 16-byte fixed salt for PBKDF2 derivation
 
 def deriveEncryptionKey(passwordEncodedBytes, saltValue=FixedSaltValue, iterationCount=100000, keyLength=32):
